@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+.stfolder
+*.exe
+*.out
+go.sum
+hello/hello
+gallery/gallery
+widgets/widgets
