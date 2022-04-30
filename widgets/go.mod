@@ -1,4 +1,4 @@
-module github.com/nuxui/samples-github/widgets
+module github.com/nuxui/samples/widgets
 
 go 1.18
 
