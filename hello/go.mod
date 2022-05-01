@@ -1,5 +1,7 @@
-module github.com/nuxui/samples/hello
+module nuxui.org/samples/hello
 
 go 1.18
 
-require github.com/nuxui/nuxui latest
+require nuxui.org/nuxui v0.0.1
+
+replace nuxui.org/nuxui v0.0.1 => github.com/nuxui/nuxui v0.0.1

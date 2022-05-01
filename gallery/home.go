@@ -13,9 +13,9 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/nuxui/nuxui/log"
-	"github.com/nuxui/nuxui/nux"
-	"github.com/nuxui/nuxui/ui"
+	"nuxui.org/nuxui/log"
+	"nuxui.org/nuxui/nux"
+	"nuxui.org/nuxui/ui"
 )
 
 type Home interface {
@@ -25,6 +25,7 @@ type Home interface {
 type home struct {
 	*nux.ComponentBase
 
+	content nux.Widget
 	pictureNames []string
 	pictureIndex int
 	pictureDir   string
@@ -32,21 +33,21 @@ type home struct {
 	rootView     ui.Column
 }
 
-func NewHome(ctx nux.Context, attrs ...nux.Attr) Home {
+func NewHome(attr nux.Attr) Home {
 	me := &home{
-		picture:      ui.NewImage(ctx),
+		picture:      ui.NewImage(attr),
 		pictureNames: []string{},
 	}
-	me.ComponentBase = nux.NewComponentBase(ctx, me, attrs...)
-	nux.InflateLayout(ctx, me, me.Template())
+	me.ComponentBase = nux.NewComponentBase(me, attr)
+	me.content = nux.InflateLayout(me, me.template())
 	return me
 }
 
-func (me *home) Template() string {
+func (me *home) template() string {
 	return `
 {
   import: {
-    ui: github.com/nuxui/nuxui/ui,
+    ui: nuxui.org/nuxui/ui,
   },
 
   layout: {
@@ -57,15 +58,6 @@ func (me *home) Template() string {
     background: #00ff00,
     padding: {left: 10%, top: 10px, right: 10%, bottom: 10px},
     children:[
-		// {
-		// 	id: "edit",
-		// 	widget: ui.Editor,
-		// 	width: 1wt,
-		// 	height: 30px,
-		// 	background: #982368,
-		// 	text: "nuxui.org example",
-		// 	font: {family: "Menlo, Monaco, Courier New, monospace", size: 14, color: #ffffff }
-		// },
 		{
 			id: "title",
 			widget: ui.Text,
@@ -89,9 +81,6 @@ func (me *home) Template() string {
 }
   
   `
-}
-
-func (me *home) Creating(attr nux.Attr) {
 }
 
 func (me *home) OnMount() {

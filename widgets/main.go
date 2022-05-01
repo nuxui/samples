@@ -5,9 +5,9 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/log"
-	"github.com/nuxui/nuxui/nux"
-	"github.com/nuxui/nuxui/theme"
+	"nuxui.org/nuxui/log"
+	"nuxui.org/nuxui/nux"
+	"nuxui.org/nuxui/theme"
 )
 
 const manifest = `
@@ -18,7 +18,7 @@ const manifest = `
 
   manifest: {
 	  name: "Whizz",
-	  package: "github.com/nuxui/whizz"	//android will be 'github.com.nuxui.whizz'
+	  package: "nuxui.org/whizz"	//android will be 'github.com.nuxui.whizz'
 	  version: "1.0.1",
 	  icon: "app-icon",
 	  appId: "ac29bdde-def5-5b06-a0c4-19ea611a865f",

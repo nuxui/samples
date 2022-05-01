@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/nux"
-	_ "github.com/nuxui/nuxui/ui"
+	"nuxui.org/nuxui/nux"
+	_ "nuxui.org/nuxui/ui"
 )
 
 type Home interface {
@@ -15,7 +15,6 @@ type Home interface {
 
 type home struct {
 	*nux.ComponentBase
-
 	content nux.Widget
 }
 
@@ -30,7 +29,7 @@ func (me *home) template() string {
 	return `
 {
   import: {
-    ui: github.com/nuxui/nuxui/ui,
+    ui: nuxui.org/nuxui/ui,
   },
 
   layout: {
@@ -44,7 +43,7 @@ func (me *home) template() string {
 		{
 			widget: ui.Text,
 			text: hello,
-			testSize: 20,
+			textSize: 20,
 		}
 	]
   }

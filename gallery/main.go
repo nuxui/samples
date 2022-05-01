@@ -5,9 +5,7 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/log"
-	"github.com/nuxui/nuxui/nux"
-	"github.com/nuxui/nuxui/ui"
+	"nuxui.org/nuxui/nux"
 )
 
 const manifest = `
@@ -18,7 +16,7 @@ const manifest = `
 
   manifest: {
 	  name: "Whizz",
-	  package: "github.com/nuxui/samples/hello_world"	//android will be 'github.com.nuxui.samples.hello_world'
+	  package: "nuxui.org/samples/hello_world"	//android will be 'github.com.nuxui.samples.hello_world'
 	  version: "1.0.1",
 	  icon: "app-icon",
 	  appId: "ac29bdde-def5-5b06-a0c4-19ea611a865f",
@@ -69,55 +67,11 @@ const manifest = `
 }
 `
 
-/*
-window creating(){
-	Owner().(Window).SetWidth(50%)
-	Owner().(Window).SetHeight(50%)
-	nux.GetScreen().Width()
-	nux.GetScreen().Height()
-}
-
-*/
-
-// type windowDelegate struct {
-// }
-
-// func (me *windowDelegate) Creating(attr nux.Attr) {
-
-// }
-
-// func (me *windowDelegate) Created() {
-
-// }
-
-// func (me *windowDelegate) Measured() {
-
-// }
-
-// func (me *windowDelegate) Layout() {
-
-// }
-
-// func (me *windowDelegate) Draw(canvas nux.Canvas) {
-
-// }
-
 func init() {
-	nux.Use(ui.NewRow, ui.NewColumn)
-	nux.RegisterWidget((*Home)(nil), func(ctx nux.Context, attr ...nux.Attr) nux.Widget { return NewHome(ctx, attr...) })
-
+	nux.RegisterWidget((*Home)(nil), func(attr nux.Attr) nux.Widget { return NewHome(attr) })
 }
 
 func main() {
-	defer log.Close()
-	log.V("main", "hello")
 	nux.Init(manifest)
-	// window is not created before call Run, how did set it?
-	// nux.App().Window().Decor().SetBackgroundColor(nux.Transparent)
-	// nux.AddMainWindowMixins(&windowDelegate{})
-	// registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks
-	// app.Mixins()
-	// nux.MainWindow()
-	// nux.AddAppMixins()
-	nux.Run() // application.run()
+	nux.Run()
 }

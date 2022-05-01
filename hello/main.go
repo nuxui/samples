@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/nux"
+	"nuxui.org/nuxui/nux"
 )
 
 const manifest = `

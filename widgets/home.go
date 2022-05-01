@@ -5,10 +5,10 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/log"
-	"github.com/nuxui/nuxui/nux"
-	"github.com/nuxui/nuxui/ui"
-	_ "github.com/nuxui/nuxui/ui"
+	"nuxui.org/nuxui/log"
+	"nuxui.org/nuxui/nux"
+	"nuxui.org/nuxui/ui"
+	_ "nuxui.org/nuxui/ui"
 )
 
 type Home interface {
@@ -32,8 +32,8 @@ func (me *home) template() string {
 	return `
 {
   import: {
-    ui: github.com/nuxui/nuxui/ui,
-    // theme: github.com/nuxui/nuxui/// theme,
+    ui: nuxui.org/nuxui/ui,
+    // theme: nuxui.org/nuxui/// theme,
   },
 
   styles: {
