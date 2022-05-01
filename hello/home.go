@@ -5,9 +5,7 @@
 package main
 
 import (
-	"github.com/nuxui/nuxui/log"
 	"github.com/nuxui/nuxui/nux"
-	"github.com/nuxui/nuxui/ui"
 	_ "github.com/nuxui/nuxui/ui"
 )
 
@@ -33,20 +31,7 @@ func (me *home) template() string {
 {
   import: {
     ui: github.com/nuxui/nuxui/ui,
-    // theme: github.com/nuxui/nuxui/// theme,
   },
-
-  styles: {
-	  btnDark:{
-		  drawable: ui.StateDrawable,
-		  pressed: {
-			  drawable: ui.ShapeDrawable,
-		  },
-		  default:{
-			drawable: ui.ShapeDrawable,
-		  }
-	  }
-  }
 
   layout: {
 	id: "root",
@@ -59,26 +44,10 @@ func (me *home) template() string {
 		{
 			widget: ui.Text,
 			text: hello,
-			width: 100%,
-			height: auto,
+			testSize: 20,
 		}
 	]
   }
 }
   `
-}
-
-func (me *home) Mount(parent nux.Widget) {
-	// nux.SetTheme()
-	// nux.UseTheme("metarial", "dark")
-	// ui.NewButton(nil, nux.ThemeStyle("button.large"))
-	col := nux.Find(me, "root").(ui.Column)
-	nux.OnTap(col, func(detail nux.GestureDetail) {
-		log.V("nuxui", "root tap")
-	})
-
-	btn := nux.Find(me, "xxx").(ui.Button)
-	nux.OnTap(btn, func(detail nux.GestureDetail) {
-		log.V("nuxui", "xxx tap")
-	})
 }
