@@ -61,10 +61,8 @@ func (me *home) template() string {
 		{
 			id: "title",
 			widget: ui.Text,
-			width: auto,
-			height: auto,
-			background: #ff00ff,
-			text: "xxxxxxxxx",
+			textSize: 25,
+			text: "show current directory pictures",
 			font: {family: "Consolas, Courier New, monospace", size: 14, color: #000000 },
 		},
       {
@@ -83,7 +81,7 @@ func (me *home) template() string {
   `
 }
 
-func (me *home) OnMount() {
+func (me *home) Mount() {
 	// nux.App().MainWindow().SetAlpha(0.5)
 
 	me.picture = nux.Find(me, "img-preview").(ui.Image)
@@ -139,6 +137,10 @@ func (me *home) getDirAllPicWitchOnePicName(src string) {
 		}
 	}
 
+	me.picture.SetSrc(fmt.Sprintf("%s%c%s", me.pictureDir, filepath.Separator, me.pictureNames[0]))
+
+	log.I("gallery", "pictureNames: %s", me.pictureNames)
+
 }
 
 func (me *home) onTap(detail nux.GestureDetail) {
@@ -172,9 +174,10 @@ func (me *home) OnKeyEvent(event nux.KeyEvent) bool {
 			log.V("home", "OnKeyEvent = Key_Right %d", me.pictureIndex)
 			if me.pictureIndex < len(me.pictureNames)-1 {
 				me.pictureIndex++
-				me.picture.SetSrc(fmt.Sprintf("%s%c%s", me.pictureDir, filepath.Separator, me.pictureNames[me.pictureIndex]))
+				imgpath := fmt.Sprintf("%s%c%s", me.pictureDir, filepath.Separator, me.pictureNames[me.pictureIndex])
+				me.picture.SetSrc(imgpath)
+				log.V("home", "OnKeyEvent = src = %s, %s", me.picture.Src(),imgpath)
 			}
-			log.V("home", "OnKeyEvent = src = %s", me.picture.Src())
 			runtime.GC()
 		}
 

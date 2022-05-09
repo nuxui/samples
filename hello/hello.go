@@ -1,7 +1,3 @@
-// Copyright 2018 The NuxUI Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package main
 
 import (
@@ -33,20 +29,39 @@ func (me *home) template() string {
   },
 
   layout: {
-	id: "root",
 	widget: ui.Column,
 	width: 100%,
 	height: 100%,
 	background: #303030,
-	padding: {left: 16px, top: 8px, right: 16px, bottom: 8px},
 	children:[
 		{
 			widget: ui.Text,
-			text: hello,
-			textSize: 20,
+			text: Hello NuxUI,
+			textSize: 30,
 		}
 	]
   }
 }
   `
+}
+
+func init() {
+	nux.RegisterWidget((*Home)(nil), func(attr nux.Attr) nux.Widget { return NewHome(attr) })
+}
+
+const manifest = `
+{
+  import: {
+	main: main,
+  }, 
+
+  manifest: {
+	  main: main.Home,
+  },
+}
+`
+
+func main() {
+	nux.Init(manifest)
+	nux.Run()
 }
