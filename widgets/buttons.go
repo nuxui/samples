@@ -550,7 +550,7 @@ func (me *buttons) template() string {
 						height: auto,
 						children:[
 							{
-								widget: ui.Opt,
+								widget: ui.Check,
 								width: auto,
 								height: auto,
 								text: "Gilad Gray",
@@ -568,13 +568,13 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"opted", src: "assets/ic_opt_checked.png"},
+												{state:"checked", src: "assets/ic_opt_checked.png"},
 											],
 										},
 									},
 								},
 							},{
-								widget: ui.Opt,
+								widget: ui.Check,
 								width: auto,
 								height: auto,
 								text: "Jason Killian",
@@ -592,13 +592,13 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"opted", src: "assets/ic_opt_checked.png"},
+												{state:"checked", src: "assets/ic_opt_checked.png"},
 											],
 										},
 									},
 								},
 							},{
-								widget: ui.Opt,
+								widget: ui.Check,
 								width: auto,
 								height: auto,
 								text: "Antoine Llorca",
@@ -616,7 +616,7 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"opted", src: "assets/ic_opt_checked.png"},
+												{state:"checked", src: "assets/ic_opt_checked.png"},
 											],
 										},
 									},
@@ -651,7 +651,7 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"opted", src: "assets/ic_radio_checked.png"},
+												{state:"checked", src: "assets/ic_radio_checked.png"},
 											],
 										},
 									},
@@ -675,7 +675,7 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"opted", src: "assets/ic_radio_checked.png"},
+												{state:"checked", src: "assets/ic_radio_checked.png"},
 											],
 										},
 									},
@@ -699,7 +699,7 @@ func (me *buttons) template() string {
 											drawable: ui.ImageDrawable,
 											states:[
 												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"opted", src: "assets/ic_radio_checked.png"},
+												{state:"checked", src: "assets/ic_radio_checked.png"},
 											],
 										},
 									},
@@ -733,7 +733,7 @@ func (me *buttons) template() string {
 										drawable: ui.ImageDrawable,
 										states:[
 											{state:"default", src: "assets/ic_switch_on.png"},
-											{state:"opted", src: "assets/ic_switch_off.png"},
+											{state:"checked", src: "assets/ic_switch_off.png"},
 										],
 									},
 								}
@@ -756,7 +756,7 @@ func (me *buttons) template() string {
 										drawable: ui.ImageDrawable,
 										states:[
 											{state:"default", src: "assets/ic_switch_on.png"},
-											{state:"opted", src: "assets/ic_switch_off.png"},
+											{state:"checked", src: "assets/ic_switch_off.png"},
 										],
 									},
 								}
