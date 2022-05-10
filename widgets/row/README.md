@@ -1,2 +1,2 @@
 ### preview
-![](https://raw.githubusercontent.com/nuxui/samples/master/widgets/column/preview.jpg)
+![](https://raw.githubusercontent.com/nuxui/samples/master/widgets/row/preview.jpg)
