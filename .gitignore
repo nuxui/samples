@@ -7,3 +7,4 @@ go.sum
 hello/hello
 gallery/gallery
 widgets/widgets
+widgets/column/column
