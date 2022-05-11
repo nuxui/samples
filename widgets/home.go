@@ -69,7 +69,6 @@ func (me *home) template() string {
 
 func (me *home) Mount(parent nux.Widget) {
 	// nux.SetTheme()
-	// nux.UseTheme("metarial", "dark")
 	// ui.NewButton(nil, nux.ThemeStyle("button.large"))
 	col := nux.Find(me, "root").(ui.Column)
 	nux.OnTap(col, func(detail nux.GestureDetail) {

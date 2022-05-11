@@ -7,7 +7,6 @@ package main
 import (
 	"nuxui.org/nuxui/log"
 	"nuxui.org/nuxui/nux"
-	"nuxui.org/nuxui/theme"
 )
 
 const manifest = `
@@ -70,7 +69,6 @@ const manifest = `
 `
 
 func init() {
-	nux.UseTheme(&theme.Material{})
 	nux.RegisterWidget((*Home)(nil), func(attr nux.Attr) nux.Widget { return NewHome(attr) })
 	nux.RegisterWidget((*Buttons)(nil), func(attr nux.Attr) nux.Widget { return NewButtons(attr) })
 }
