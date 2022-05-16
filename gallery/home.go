@@ -25,7 +25,7 @@ type Home interface {
 type home struct {
 	*nux.ComponentBase
 
-	content nux.Widget
+	content      nux.Widget
 	pictureNames []string
 	pictureIndex int
 	pictureDir   string
@@ -39,7 +39,7 @@ func NewHome(attr nux.Attr) Home {
 		pictureNames: []string{},
 	}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.template())
+	me.content = nux.InflateLayout(me, me.template(), nil)
 	return me
 }
 
@@ -52,7 +52,7 @@ func (me *home) template() string {
 
   layout: {
     id: "root-row",
-    widget: ui.Column,
+    type: ui.Column,
     width: 1wt,
     height: 1wt,
     background: #00ff00,
@@ -60,14 +60,14 @@ func (me *home) template() string {
     children:[
 		{
 			id: "title",
-			widget: ui.Text,
+			type: ui.Text,
 			textSize: 25,
 			text: "show current directory pictures",
 			font: {family: "Consolas, Courier New, monospace", size: 14, color: #000000 },
 		},
       {
         id: "img-preview",
-        widget: ui.Image,
+        type: ui.Image,
         width: 1wt,
         height: 1wt,
         background: #ffffff,
@@ -84,14 +84,14 @@ func (me *home) template() string {
 func (me *home) Mount() {
 	// nux.App().MainWindow().SetAlpha(0.5)
 
-	me.picture = nux.Find(me, "img-preview").(ui.Image)
+	me.picture = nux.FindChild(me, "img-preview").(ui.Image)
 	nux.OnScrollY(me.picture, me.onScrollY)
 	// me.picture.SetSrc("~/Downloads")
 	me.getDirAllPicWitchOnePicName("./a")
 	nux.App().MainWindow().SetTitle("win32 title ok ")
 	log.V("home", "========= window tilte = %s", nux.App().MainWindow().Title())
 
-	me.rootView = nux.Find(me, "root-row").(ui.Column)
+	me.rootView = nux.FindChild(me, "root-row").(ui.Column)
 	nux.OnTap(me.rootView, me.onTap)
 }
 
@@ -176,7 +176,7 @@ func (me *home) OnKeyEvent(event nux.KeyEvent) bool {
 				me.pictureIndex++
 				imgpath := fmt.Sprintf("%s%c%s", me.pictureDir, filepath.Separator, me.pictureNames[me.pictureIndex])
 				me.picture.SetSrc(imgpath)
-				log.V("home", "OnKeyEvent = src = %s, %s", me.picture.Src(),imgpath)
+				log.V("home", "OnKeyEvent = src = %s, %s", me.picture.Src(), imgpath)
 			}
 			runtime.GC()
 		}

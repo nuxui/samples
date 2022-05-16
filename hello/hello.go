@@ -21,7 +21,7 @@ type home struct {
 func NewHome(attr nux.Attr) Home {
 	me := &home{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.template())
+	me.content = nux.InflateLayout(me, me.template(), nil)
 	return me
 }
 
@@ -33,13 +33,13 @@ func (me *home) template() string {
   },
 
   layout: {
-	widget: ui.Column,
+	type: ui.Column,
 	width: 100%,
 	height: 100%,
 	background: #303030,
 	children:[
 		{
-			widget: ui.Text,
+			type: ui.Text,
 			text: Hello NuxUI,
 			textSize: 30,
 		}
@@ -50,7 +50,7 @@ func (me *home) template() string {
 }
 
 func init() {
-	nux.RegisterWidget((*Home)(nil), func(attr nux.Attr) nux.Widget { return NewHome(attr) })
+	nux.RegisterType((*Home)(nil), func(attr nux.Attr) any { return NewHome(attr) })
 }
 
 const manifest = `

@@ -24,40 +24,27 @@ type home struct {
 func NewHome(attr nux.Attr) Home {
 	me := &home{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.template())
+	me.content = nux.InflateLayout(me, me.layout(), nil)
 	return me
 }
 
-func (me *home) template() string {
+func (me *home) layout() string {
 	return `
 {
   import: {
     ui: nuxui.org/nuxui/ui,
-    // theme: nuxui.org/nuxui/// theme,
   },
-
-  styles: {
-	  btnDark:{
-		  drawable: ui.StateDrawable,
-		  pressed: {
-			  drawable: ui.ShapeDrawable,
-		  },
-		  default:{
-			drawable: ui.ShapeDrawable,
-		  }
-	  }
-  }
 
   layout: {
 	id: "root",
-	widget: ui.Column,
+	type: ui.Column,
 	width: 100%,
 	height: 100%,
 	background: #303030,
 	padding: {left: 16px, top: 8px, right: 16px, bottom: 8px},
 	children:[
 		{
-			widget: main.Buttons,
+			type: main.Buttons,
 			width: 100%,
 			height: auto,
 		},
@@ -68,14 +55,13 @@ func (me *home) template() string {
 }
 
 func (me *home) Mount(parent nux.Widget) {
-	// nux.SetTheme()
 	// ui.NewButton(nil, nux.ThemeStyle("button.large"))
-	col := nux.Find(me, "root").(ui.Column)
+	col := nux.FindChild(me, "root").(ui.Column)
 	nux.OnTap(col, func(detail nux.GestureDetail) {
 		log.V("nuxui", "root tap")
 	})
 
-	btn := nux.Find(me, "xxx").(ui.Button)
+	btn := nux.FindChild(me, "xxx").(ui.Button)
 	nux.OnTap(btn, func(detail nux.GestureDetail) {
 		log.V("nuxui", "xxx tap")
 	})

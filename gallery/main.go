@@ -50,15 +50,15 @@ const manifest = `
 			margin: {left:1wt, top: 1wt, right: 1wt, bottom: 1wt}, // default align is center
 			mixins:[main.Window],
 		},
-		widget: main.Root,
+		type: main.Root,
 		children: [
 			{
 				path: "/home",
-				widget: main.Rect,
+				type: main.Rect,
 			},
 			{
 				path: "/login",
-				widget: main.Login,
+				type: main.Login,
 			},
 		],
 	  },
@@ -68,7 +68,7 @@ const manifest = `
 `
 
 func init() {
-	nux.RegisterWidget((*Home)(nil), func(attr nux.Attr) nux.Widget { return NewHome(attr) })
+	nux.RegisterType((*Home)(nil), func(attr nux.Attr) any { return NewHome(attr) })
 }
 
 func main() {
