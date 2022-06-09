@@ -25,7 +25,6 @@ type Home interface {
 type home struct {
 	*nux.ComponentBase
 
-	content      nux.Widget
 	pictureNames []string
 	pictureIndex int
 	pictureDir   string
@@ -39,7 +38,7 @@ func NewHome(attr nux.Attr) Home {
 		pictureNames: []string{},
 	}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.template(), nil)
+	nux.InflateLayout(me, me.template(), nil)
 	return me
 }
 

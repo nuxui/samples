@@ -27,14 +27,12 @@ type Buttons interface {
 
 type buttons struct {
 	*nux.ComponentBase
-
-	content nux.Widget
 }
 
 func NewButtons(attr nux.Attr) Buttons {
 	me := &buttons{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.layout(), nux.InflateStyle(btns_style))
+	nux.InflateLayout(me, me.layout(), nux.InflateStyle(btns_style))
 	return me
 }
 
@@ -361,7 +359,7 @@ func (me *buttons) layout() string {
 									},
 								}
 							},
-						},						{
+						},{
 							type: ui.Switch,
 							id: "switch",
 							text: "Right Switch",
@@ -386,7 +384,13 @@ func (me *buttons) layout() string {
 					],
 				}
 			],
-		}
+		},{
+			type: ui.Editor,
+			text: "Input",
+			textSize: 20,
+			textColor: #ffffff,
+			margin:{left: 50px, top: 20px},
+		},
 	]
   }
 }

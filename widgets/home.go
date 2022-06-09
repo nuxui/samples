@@ -17,14 +17,12 @@ type Home interface {
 
 type home struct {
 	*nux.ComponentBase
-
-	content nux.Widget
 }
 
 func NewHome(attr nux.Attr) Home {
 	me := &home{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.layout(), nil)
+	nux.InflateLayout(me, me.layout(), nil)
 	return me
 }
 
@@ -37,7 +35,7 @@ func (me *home) layout() string {
 
   layout: {
 	id: "root",
-	type: ui.Column,
+	type: ui.Scroll,
 	width: 100%,
 	height: 100%,
 	background: #303030,

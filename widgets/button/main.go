@@ -5,6 +5,7 @@
 package main
 
 import (
+	"nuxui.org/nuxui/log"
 	"nuxui.org/nuxui/nux"
 	_ "nuxui.org/nuxui/ui"
 )
@@ -15,13 +16,12 @@ type Home interface {
 
 type home struct {
 	*nux.ComponentBase
-	content nux.Widget
 }
 
 func NewHome(attr nux.Attr) Home {
 	me := &home{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.layout(), nil)
+    nux.InflateLayout(me, me.layout(), nil)
 	return me
 }
 
@@ -42,7 +42,6 @@ func (me *home) layout() string {
             {
                 type: ui.Button,
                 text: normal button,
-                style: [btn_red],
             },{
                 type: ui.Button,
                 text: icon button,
@@ -63,23 +62,25 @@ func (me *home) layout() string {
   `
 }
 
+func (me *home) Mount()  {
+    go func(){
+        nux.RunOnUI(func(){
+            log.I("nuxui", "isMainThread=%t", nux.IsMainThread())
+        })
+    }()
+}
+
 func init() {
 	nux.RegisterType((*Home)(nil), func(attr nux.Attr) any { return NewHome(attr) })
 }
 
-const manifest = `
-{
-  import: {
-    main: main,
-  }, 
-
-  manifest: {
-      main: main.Home,
-  },
-}
-`
-
 func main() {
-	nux.Init(manifest)
-	nux.Run()
+	nux.Run(nux.NewWindow(nux.Attr{
+		"width":  "18%",
+		"height": "2:1",
+		"title":  "button",
+		"content": nux.Attr{
+			"type": "main.Home",
+		},
+	}))
 }

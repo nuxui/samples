@@ -15,13 +15,12 @@ type Home interface {
 
 type home struct {
 	*nux.ComponentBase
-	content nux.Widget
 }
 
 func NewHome(attr nux.Attr) Home {
 	me := &home{}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	me.content = nux.InflateLayout(me, me.template(), nil)
+	nux.InflateLayout(me, me.template(), nil)
 	return me
 }
 
@@ -34,8 +33,8 @@ func (me *home) template() string {
 
   layout: {
 	type: ui.Column,
-	width: 100px,
-	height: 100px,
+	width: 50%,
+	height: 1:1,
 	background: #303030,
 	children:[
 		{
@@ -59,19 +58,13 @@ func init() {
 	nux.RegisterType((*Home)(nil), func(attr nux.Attr) any { return NewHome(attr) })
 }
 
-const manifest = `
-{
-  import: {
-	main: main,
-  }, 
-
-  manifest: {
-	  main: main.Home,
-  },
-}
-`
-
 func main() {
-	nux.Init(manifest)
-	nux.Run()
+	nux.Run(nux.NewWindow(nux.Attr{
+		"width":  "200px",
+		"height": "200px",
+		"title":  "column",
+		"content": nux.Attr{
+			"type": "main.Home",
+		},
+	}))
 }
