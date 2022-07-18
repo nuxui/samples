@@ -52,7 +52,7 @@ func (me *home) layout() string {
   `
 }
 
-func (me *home) Mount(parent nux.Widget) {
+func (me *home) OnMount(parent nux.Widget) {
 	// ui.NewButton(nil, nux.ThemeStyle("button.large"))
 	col := nux.FindChild(me, "root").(ui.Column)
 	nux.OnTap(col, func(detail nux.GestureDetail) {

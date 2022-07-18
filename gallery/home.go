@@ -80,7 +80,7 @@ func (me *home) template() string {
   `
 }
 
-func (me *home) Mount() {
+func (me *home) OnMount() {
 	// nux.App().MainWindow().SetAlpha(0.5)
 
 	me.picture = nux.FindChild(me, "img-preview").(ui.Image)

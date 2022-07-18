@@ -48,7 +48,7 @@ func (me *home) layout() string {
   `
 }
 
-func (me *home) Mount() {
+func (me *home) OnMount() {
 }
 
 func init() {

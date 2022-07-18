@@ -64,7 +64,7 @@ func (me *home) layout() string {
   `
 }
 
-func (me *home) Mount() {
+func (me *home) OnMount() {
 	root := nux.FindChild(me, "root").(ui.Layer)
 	txtTap := nux.FindChild(me, "tap").(ui.Text)
 	txtPan := nux.FindChild(me, "pan").(ui.Text)

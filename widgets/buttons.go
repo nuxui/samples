@@ -202,8 +202,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"checked", src: "assets/ic_opt_checked.png"},
+												{state:"default", src: "assets/ic_opt_default.svg"},
+												{state:"checked", src: "assets/ic_opt_checked.svg"},
 											],
 										},
 									},
@@ -224,8 +224,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"checked", src: "assets/ic_opt_checked.png"},
+												{state:"default", src: "assets/ic_opt_default.svg"},
+												{state:"checked", src: "assets/ic_opt_checked.svg"},
 											],
 										},
 									},
@@ -246,8 +246,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_opt_default.png"},
-												{state:"checked", src: "assets/ic_opt_checked.png"},
+												{state:"default", src: "assets/ic_opt_default.svg"},
+												{state:"checked", src: "assets/ic_opt_checked.svg"},
 											],
 										},
 									},
@@ -257,7 +257,7 @@ func (me *buttons) layout() string {
 					}
 				},{
 					type: ui.Options,
-					radio: true,
+					single: true,
 					content: {
 						type: ui.Column,
 						width: 1wt,
@@ -278,8 +278,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"checked", src: "assets/ic_radio_checked.png"},
+												{state:"default", src: "assets/ic_radio_default.svg"},
+												{state:"checked", src: "assets/ic_radio_checked.svg"},
 											],
 										},
 									},
@@ -300,8 +300,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"checked", src: "assets/ic_radio_checked.png"},
+												{state:"default", src: "assets/ic_radio_default.svg"},
+												{state:"checked", src: "assets/ic_radio_checked.svg"},
 											],
 										},
 									},
@@ -322,8 +322,8 @@ func (me *buttons) layout() string {
 										src: {
 											type: ui.ImageDrawable,
 											states:[
-												{state:"default", src: "assets/ic_radio_default.png"},
-												{state:"checked", src: "assets/ic_radio_checked.png"},
+												{state:"default", src: "assets/ic_radio_default.svg"},
+												{state:"checked", src: "assets/ic_radio_checked.svg"},
 											],
 										},
 									},
@@ -353,8 +353,8 @@ func (me *buttons) layout() string {
 									src: {
 										type: ui.ImageDrawable,
 										states:[
-											{state:"default", src: "assets/ic_switch_on.png"},
-											{state:"checked", src: "assets/ic_switch_off.png"},
+											{state:"default", src: "assets/ic_switch_off.svg"},
+											{state:"checked", src: "assets/ic_switch_on.svg"},
 										],
 									},
 								}
@@ -365,6 +365,7 @@ func (me *buttons) layout() string {
 							text: "Right Switch",
 							textSize: 14,
 							textColor: #ffffff,
+							checked: true,
 							icon:{
 								right: {
 									type: ui.Image,
@@ -374,8 +375,8 @@ func (me *buttons) layout() string {
 									src: {
 										type: ui.ImageDrawable,
 										states:[
-											{state:"default", src: "assets/ic_switch_on.png"},
-											{state:"checked", src: "assets/ic_switch_off.png"},
+											{state:"default", src: "assets/ic_switch_off.svg"},
+											{state:"checked", src: "assets/ic_switch_on.svg"},
 										],
 									},
 								}
@@ -397,7 +398,7 @@ func (me *buttons) layout() string {
   `
 }
 
-func (me *buttons) Mount(parent nux.Widget) {
+func (me *buttons) OnMount(parent nux.Widget) {
 	// nux.SetTheme()
 	// ui.NewButton(nil, nux.ThemeStyle("button.large"))
 	col := nux.FindChild(me, "root").(ui.Column)
