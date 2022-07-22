@@ -2,8 +2,8 @@ module nuxui.org/samples/widgets/column
 
 go 1.18
 
-require nuxui.org/nuxui v0.0.5
+require nuxui.org/nuxui v0.0.6
 
-replace nuxui.org/nuxui v0.0.5 => github.com/nuxui/nuxui v0.0.5
+
 
 

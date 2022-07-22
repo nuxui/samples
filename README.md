@@ -1,4 +1,4 @@
-# Samples
+# NuxUI Samples
 
 A collection of nuxui samples
 

@@ -189,69 +189,12 @@ func (me *buttons) layout() string {
 							{
 								type: ui.Check,
 								text: "Gilad Gray",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_opt_default.svg"},
-												{state:"checked", src: "assets/ic_opt_checked.svg"},
-											],
-										},
-									},
-								},
 							},{
 								type: ui.Check,
 								text: "Jason Killian",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_opt_default.svg"},
-												{state:"checked", src: "assets/ic_opt_checked.svg"},
-											],
-										},
-									},
-								},
 							},{
 								type: ui.Check,
 								text: "Antoine Llorca",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_opt_default.svg"},
-												{state:"checked", src: "assets/ic_opt_checked.svg"},
-											],
-										},
-									},
-								},
 							}
 						],
 					}
@@ -265,69 +208,12 @@ func (me *buttons) layout() string {
 							{
 								type: ui.Radio,
 								text: "Gilad Gray",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_radio_default.svg"},
-												{state:"checked", src: "assets/ic_radio_checked.svg"},
-											],
-										},
-									},
-								},
 							},{
 								type: ui.Radio,
 								text: "Jason Killian",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_radio_default.svg"},
-												{state:"checked", src: "assets/ic_radio_checked.svg"},
-											],
-										},
-									},
-								},
 							},{
 								type: ui.Radio,
 								text: "Antoine Llorca",
-								textSize: 14,
-								textColor: #ffffff,
-								margin: {left: 16px},
-								padding: {left: 0px, top: 8px, right: 0px, bottom: 8px},
-								icon:{
-									left: {
-										type: ui.Image,
-										width: 1.2em,
-										height: 1.2em,
-										margin:{right: 6px },
-										src: {
-											type: ui.ImageDrawable,
-											states:[
-												{state:"default", src: "assets/ic_radio_default.svg"},
-												{state:"checked", src: "assets/ic_radio_checked.svg"},
-											],
-										},
-									},
-								},
 							}
 						],
 					}
@@ -335,52 +221,22 @@ func (me *buttons) layout() string {
 					type: ui.Column,
 					width: 1wt,
 					bacground: #ff0000,
-					clipChildren: true,
+					// clipChildren: true,
 					margin: {left: 16px},
 					children: [
 						{
 							type: ui.Switch,
 							id: "switch",
-							text: "Left Switch",
-							textSize: 14,
-							textColor: #ffffff,
-							icon:{
-								left: {
-									type: ui.Image,
-									width: 1.5em,
-									height: 1.5em,
-									margin:{right: 6px },
-									src: {
-										type: ui.ImageDrawable,
-										states:[
-											{state:"default", src: "assets/ic_switch_off.svg"},
-											{state:"checked", src: "assets/ic_switch_on.svg"},
-										],
-									},
-								}
-							},
+							text: "Gilad Gray",
 						},{
 							type: ui.Switch,
 							id: "switch",
-							text: "Right Switch",
-							textSize: 14,
-							textColor: #ffffff,
 							checked: true,
-							icon:{
-								right: {
-									type: ui.Image,
-									width: 1.5em,
-									height: 1.5em,
-									margin:{left: 6px },
-									src: {
-										type: ui.ImageDrawable,
-										states:[
-											{state:"default", src: "assets/ic_switch_off.svg"},
-											{state:"checked", src: "assets/ic_switch_on.svg"},
-										],
-									},
-								}
-							},
+							text: "Jason Killian",
+						},{
+							type: ui.Switch,
+							id: "switch",
+							text: "Antoine Llorca",
 						}
 					],
 				}
