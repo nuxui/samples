@@ -167,7 +167,15 @@ func (me *home) layout() string {
 						id: change,
 						type: ui.Button,
 						text: "Change",
+						// theme: [btn, btn_primary],
 						margin: {left: 20px},
+						icon: {
+							left: {
+								width: 1em, height: 1em,
+								type: ui.Image,
+								src: "assets/folder-open-fill.svg",
+							},
+						},
 					}
 				],
 			},{
@@ -301,7 +309,8 @@ func (me home) OnMount() {
 	})
 
 	nux.OnHoverEnter(txt_saveto, func(detail nux.GestureDetail) {
-		nux.LoadNativeCursor(nux.CursorHand).Set()
+		log.I("nuxui", "OnHoverEnter")
+		nux.LoadNativeCursor(nux.CursorFinger).Set()
 	})
 	nux.OnHoverExit(txt_saveto, func(detail nux.GestureDetail) {
 		nux.LoadNativeCursor(nux.CursorArrow).Set()
