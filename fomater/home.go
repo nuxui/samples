@@ -1,14 +1,14 @@
 package main
 
 import (
-	"nuxui.org/nuxui/nux"
 	"nuxui.org/nuxui/log"
+	"nuxui.org/nuxui/nux"
 	"nuxui.org/nuxui/ui"
 
-	"path/filepath"
-	"strings"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"strings"
 )
 
 type Home interface {
@@ -19,8 +19,8 @@ type home struct {
 	*nux.ComponentBase
 
 	pickedFile string
-	convertTo string
-	saveTo string
+	convertTo  string
+	saveTo     string
 }
 
 func NewHome(attr nux.Attr) Home {
@@ -30,7 +30,7 @@ func NewHome(attr nux.Attr) Home {
 	return me
 }
 
-func (me *home)style() string {
+func (me *home) style() string {
 	return `
 {
 	import: {
@@ -48,7 +48,7 @@ func (me *home)style() string {
 `
 }
 
-func (me *home)layout()string{
+func (me *home) layout() string {
 	return `
 {
 	import: {
@@ -169,6 +169,13 @@ func (me *home)layout()string{
 								type: ui.Button,
 								text: Change,
 								margin: {left: 20px},
+								icon: {
+									left: {
+										width: 1em, height: 1em,
+										type: ui.Image,
+										src: "assets/folder-open-fill.svg",
+									},
+								},		
 							}
 						],
 					},{
@@ -190,7 +197,7 @@ func (me *home)layout()string{
 `
 }
 
-func (me *home) OnMount(){
+func (me *home) OnMount() {
 	img_preview := nux.FindChild(me, "img_preview").(ui.Image)
 	btn_convert := nux.FindChild(me, "btn_convert").(ui.Button)
 	btn_change := nux.FindChild(me, "btn_change").(ui.Button)
@@ -205,7 +212,7 @@ func (me *home) OnMount(){
 	}
 	txt_saveto.SetText(dir)
 
-	nux.OnTap(pick_image, func(detail nux.GestureDetail){
+	nux.OnTap(pick_image, func(detail nux.GestureDetail) {
 		nux.PickFileDialog().
 			SetDirectory(dir).
 			SetExtensionFilters(map[string][]string{
@@ -213,17 +220,17 @@ func (me *home) OnMount(){
 			}).
 			AllowsChooseFiles().
 			AllowsCreateFolders().
-			ShowModal(func(ok bool, ret []string){
+			ShowModal(func(ok bool, ret []string) {
 				log.I("fomater", "%t, %s", ok, ret)
-				if ok && len(ret)>0{
+				if ok && len(ret) > 0 {
 					me.pickedFile = ret[0]
 					img_preview.SetSrc(me.pickedFile)
 					img_preview.SetBackgroundColor(nux.White)
 
 					if me.convertTo == "" {
 						txt_saveto.SetText(filepath.Dir(me.pickedFile))
-					}else{
-						me.saveTo = filepath.Dir(me.pickedFile) + "/" + 
+					} else {
+						me.saveTo = filepath.Dir(me.pickedFile) + "/" +
 							me.getFileBaseNameWidthoutExt(me.pickedFile) + "." + me.convertTo
 						txt_saveto.SetText(me.saveTo)
 					}
@@ -231,7 +238,7 @@ func (me *home) OnMount(){
 			})
 	})
 
-	options.SetOnSelectionChanged(func(w ui.Options, fromUser bool){
+	options.SetOnSelectionChanged(func(w ui.Options, fromUser bool) {
 		if w.Selected() {
 			me.convertTo = w.Values()[0]
 		}
@@ -242,15 +249,15 @@ func (me *home) OnMount(){
 					me.getFileBaseNameWidthoutExt(me.pickedFile) + "." + me.convertTo
 
 				txt_saveto.SetText(me.saveTo)
-			}else{
+			} else {
 				me.saveTo = ""
 				txt_saveto.SetText(filepath.Dir(me.pickedFile) + "/" +
-				me.getFileBaseNameWidthoutExt(me.pickedFile))
+					me.getFileBaseNameWidthoutExt(me.pickedFile))
 			}
 		}
 	})
 
-	nux.OnTap(btn_convert, func(detail nux.GestureDetail){
+	nux.OnTap(btn_convert, func(detail nux.GestureDetail) {
 		if me.pickedFile == "" {
 			txt_info.SetTextColor(nux.Red)
 			txt_info.SetText("Please choose an image file")
@@ -269,13 +276,13 @@ func (me *home) OnMount(){
 			txt_info.SetTextColor(nux.Red)
 			txt_info.SetText(err.Error())
 			return
-		}else{
+		} else {
 			txt_info.SetTextColor(nux.Green)
 			txt_info.SetText("Convert Successed")
 		}
 	})
 
-	nux.OnTap(btn_change, func(detail nux.GestureDetail){
+	nux.OnTap(btn_change, func(detail nux.GestureDetail) {
 		dir := txt_saveto.Text()
 		if me.pickedFile != "" {
 			dir = filepath.Dir(me.pickedFile)
@@ -290,7 +297,7 @@ func (me *home) OnMount(){
 		if me.convertTo != "" {
 			if me.pickedFile != "" {
 				saveName = me.getFileBaseNameWidthoutExt(me.pickedFile) + "." + me.convertTo
-			}else{
+			} else {
 				saveName = saveName + "." + me.convertTo
 			}
 		}
@@ -298,7 +305,7 @@ func (me *home) OnMount(){
 		nux.SaveFileDialog().
 			SetDirectory(dir).
 			SetSaveName(saveName).
-			ShowModal(func(ok bool, ret string){
+			ShowModal(func(ok bool, ret string) {
 				if ok {
 					me.saveTo = ret
 					txt_saveto.SetText(ret)
@@ -306,14 +313,14 @@ func (me *home) OnMount(){
 			})
 	})
 
-	nux.OnHoverEnter(txt_saveto, func(detail nux.GestureDetail){
+	nux.OnHoverEnter(txt_saveto, func(detail nux.GestureDetail) {
 		nux.LoadNativeCursor(nux.CursorFinger).Set()
 	})
-	nux.OnHoverExit(txt_saveto, func(detail nux.GestureDetail){
+	nux.OnHoverExit(txt_saveto, func(detail nux.GestureDetail) {
 		nux.LoadNativeCursor(nux.CursorArrow).Set()
 	})
 
-	nux.OnTap(txt_saveto, func(detail nux.GestureDetail){
+	nux.OnTap(txt_saveto, func(detail nux.GestureDetail) {
 		if me.saveTo != "" {
 			nux.ViewFileDialog().
 				SetDirectory(filepath.Dir(me.pickedFile)).
@@ -323,7 +330,7 @@ func (me *home) OnMount(){
 	})
 }
 
-func (me *home)getFileBaseNameWidthoutExt(filename string) string{
+func (me *home) getFileBaseNameWidthoutExt(filename string) string {
 	arr := strings.Split(filepath.Base(filename), filepath.Ext(filename))
 	if len(arr) > 0 {
 		return arr[0]
@@ -331,7 +338,7 @@ func (me *home)getFileBaseNameWidthoutExt(filename string) string{
 	return ""
 }
 
-func isDir(path string)bool{
+func isDir(path string) bool {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
 		return false

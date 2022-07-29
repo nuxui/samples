@@ -38,11 +38,11 @@ func NewHome(attr nux.Attr) Home {
 		pictureNames: []string{},
 	}
 	me.ComponentBase = nux.NewComponentBase(me, attr)
-	nux.InflateLayout(me, me.template(), nil)
+	nux.InflateLayout(me, me.layout(), nil)
 	return me
 }
 
-func (me *home) template() string {
+func (me *home) layout() string {
 	return `
 {
   import: {
