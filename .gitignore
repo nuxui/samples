@@ -3,6 +3,7 @@
 .stfolder
 *.exe
 *.out
+*.app
 go.sum
 hello/hello
 gallery/gallery

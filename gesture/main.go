@@ -160,11 +160,12 @@ func init() {
 }
 
 func main() {
-	w := nux.NewWindow(nux.Attr{
-		"title": "gesture",
-		"content": nux.Attr{
-			"type": "main.Home",
-		},
+	nux.Run(func(){
+		nux.NewWindow(nux.Attr{
+			"title": "gesture",
+			"content": nux.Attr{
+				"type": "main.Home",
+			},
+		})
 	})
-	nux.Run(w)
 }

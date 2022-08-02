@@ -56,12 +56,14 @@ func init() {
 }
 
 func main() {
-	nux.Run(nux.NewWindow(nux.Attr{
-		"width":  "18%",
-		"height": "2:1",
-		"title":  "Editor",
-		"content": nux.Attr{
-			"type": "main.Home",
-		},
-	}))
+	nux.Run(func(){
+		nux.NewWindow(nux.Attr{
+			"width":  "18%",
+			"height": "2:1",
+			"title":  "Editor",
+			"content": nux.Attr{
+				"type": "main.Home",
+			},
+		})
+	})
 }

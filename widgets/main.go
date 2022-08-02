@@ -18,12 +18,14 @@ func init() {
 func main() {
 	nux.ApplyTheme(nux.ThemeLight, theme.BootstrapLight)
 	log.SetLevel(log.VERBOSE)
-	nux.Run(nux.NewWindow(nux.Attr{
-		"width":  "50%",
-		"height": "50%",
-		"title":  "widgets",
-		"content": nux.Attr{
-			"type": "main.Home",
-		},
-	}))
+
+	nux.Run(func() {
+		nux.NewWindow(nux.Attr{
+			"width":  "50%",
+			"height": "50%",
+			"title":  "widgets",
+			"content": nux.Attr{
+				"type": "main.Home",
+			}})
+	})
 }

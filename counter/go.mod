@@ -1,5 +1,6 @@
-module nuxui.org/samples/widgets/button
+module nuxui.org/samples/counter
 
 go 1.18
 
 require nuxui.org/nuxui v0.0.9
+
