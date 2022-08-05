@@ -1,2 +1,2 @@
 ### preview
-![](https://raw.githubusercontent.com/nuxui/samples/master/widgets/row/preview.jpg)
+![](https://gitee.com/nuxui/samples/raw/master/widgets/row/preview.webp)
