@@ -4,6 +4,8 @@
 *.exe
 *.out
 *.app
+*.apk
+*.old
 go.sum
 hello/hello
 gallery/gallery
