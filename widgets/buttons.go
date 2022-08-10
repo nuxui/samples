@@ -241,13 +241,14 @@ func (me *buttons) layout() string {
 					],
 				}
 			],
-		},{
-			type: ui.Editor,
-			text: "Input",
-			textSize: 20,
-			textColor: #ffffff,
-			margin:{left: 50px, top: 20px},
 		},
+		// {
+		// 	type: ui.Editor,
+		// 	text: "Input",
+		// 	textSize: 20,
+		// 	textColor: #ffffff,
+		// 	margin:{left: 50px, top: 20px},
+		// },
 	]
   }
 }

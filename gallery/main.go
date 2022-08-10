@@ -15,14 +15,6 @@ func init() {
 
 func main() {
 	nux.ApplyTheme(nux.ThemeLight, theme.BootstrapLight)
-	nux.Run(func(){
-		nux.NewWindow(nux.Attr{
-			"width":  "1:1",
-			"height": "500px",
-			"title":  "Image Fomater",
-			"content": nux.Attr{
-				"type": "main.Home",
-			},
-		})
-	})
+	nux.App().Init(manifest)
+	nux.App().Run()
 }

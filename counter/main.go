@@ -10,6 +10,7 @@ import (
 	"nuxui.org/nuxui/log"
 	"nuxui.org/nuxui/nux"
 	"nuxui.org/nuxui/ui"
+	"nuxui.org/nuxui/theme"
 )
 
 type Home interface {
@@ -44,11 +45,13 @@ func (me *home) layout() string {
 				id: txt,
 				type: ui.Text,
 				text: "click me 0 times",
+				font: {size: 16},
 			},{
 				id: btn,
-				type: ui.Button,
+				theme: [btn, btn_primary],
 				text: "Add Count",
 				margin: {top: 20px},
+				font: {size: 16},
 			}
 		],
 	}
@@ -57,6 +60,7 @@ func (me *home) layout() string {
 }
 
 func (me *home) OnMount() {
+	log.I("nuxui", "home OnMount")
 	txt := nux.FindChild(me, "txt").(ui.Text)
 	btn := nux.FindChild(me, "btn").(ui.Button)
 	count := 0
@@ -73,15 +77,7 @@ func init(){
 }
 
 func main() {
-	nux.Run(func(){
-		nux.NewWindow(nux.Attr{
-			"width":  "15%", // screen_width x 15%
-			"height": "2:1", // width : height = 2 : 1
-			"title":  "hello",
-			"content": nux.Attr{
-				"type": "main.Home",
-			},
-		})
-	})
-
+	nux.ApplyTheme(nux.ThemeLight, theme.BootstrapLight)
+	nux.App().Init(manifest)
+	nux.App().Run()
 }

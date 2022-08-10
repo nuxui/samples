@@ -59,14 +59,6 @@ func init() {
 }
 
 func main() {
-	nux.Run(func(){
-		nux.NewWindow(nux.Attr{
-			"width":  "200px",
-			"height": "200px",
-			"title":  "row",
-			"content": nux.Attr{
-				"type": "main.Home",
-			},
-		})
-	})
+	nux.App().Init(manifest)
+	nux.App().Run()
 }
