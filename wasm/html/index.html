@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Title</title>
+  <script src="./go_wasm_exec.js"></script>
+  <!-- <script src="./sprintf.min.js"></script> -->
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;">
+		Your browser does not support the HTML canvas tag.</canvas>
+
+  <script>
+    const go = new Go(); // wasm_exec.js 中的定义
+    WebAssembly.instantiateStreaming(fetch('./main.wasm'), go.importObject)
+      .then(res => {
+        go.run(res.instance); // 执行 go main 方法
+      });
+  </script>
+</body>
+</html>
